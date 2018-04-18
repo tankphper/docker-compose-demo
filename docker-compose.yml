@@ -19,6 +19,8 @@ services:
     restart: always
     volumes:
       - ./web:/www/web
+      - ./php/conf.d/php.ini:/usr/local/etc/php/php.ini
+      - ./php/conf.d/www.conf:/usr/local/etc/php-fpm.d/www.conf
     links:
       - mysql
       - redis
