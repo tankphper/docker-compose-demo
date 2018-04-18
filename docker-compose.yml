@@ -21,13 +21,28 @@ services:
       - ./web:/www/web
     links:
       - mysql
+      - redis
   mysql:
     #image: mysql:5.7
     build: ./mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_ROOT_PASSWORD:123456
     ports:
       - "3306:3306"
     volumes:
       - ./mysql/data:/var/lib/mysql
+  redis:
+    #image: redis:4.0
+    build: ./redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf.d/redis.conf:/usr/local/etc/redis/redis.conf
+
+
+
+
+
