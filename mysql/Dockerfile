@@ -14,3 +14,7 @@ RUN apt-get update \
     procps \
     && apt-get clean \
     && apt-get autoremove
+
+COPY ./conf.d/my.cnf /etc/mysql/conf.d/custom.cnf
+
+RUN chmod 644 /etc/mysql/conf.d/custom.cnf
